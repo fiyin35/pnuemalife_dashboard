@@ -1,0 +1,105 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap");
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  font-family: "DM Sans", sans-serif;
+}
+.store {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  justify-content: space-between;
+  margin: auto;
+  gap: 10px;
+}
+
+.books {
+  width: 94%;
+  margin-top: 60px;
+  justify-content: right;
+}
+.books h2 {
+  font-weight: 700;
+  font-size: 31px;
+  color: #2b3674;
+  padding: 20px 0px;
+}
+.books .slide {
+  width: 100%;
+  overflow: hidden;
+  background: #f4f7fe;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  filter: drop-shadow(20px 5px 3px rgba(0, 0, 0, 0.12));
+  z-index: 99;
+}
+.books .spirit {
+  display: flex;
+  gap: 20px;
+  width: 130%;
+  background: #f4f7fe;
+  z-index: 99;
+}
+.books .spirit .part {
+  width: 50%;
+  background: #ffffff;
+}
+.books .spirit .part .read {
+  display: flex;
+  flex-direction: column;
+}
+.books .spirit .part img {
+  width: 100%;
+}
+.books .spirit .part h5 {
+  font-weight: 700;
+  font-size: 26px;
+  color: #111111;
+  padding: 5px;
+}
+.books .spirit .part p {
+  font-weight: 500;
+  font-size: 14px;
+  color: #717171;
+  padding: 10px 5px 50px 5px;
+}
+.books .spirit .part div {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  bottom: 15px;
+}
+.books .spirit .part div .delete {
+  background: #d7a8a7;
+  padding: 2px;
+  border-radius: 50%;
+  color: red;
+  font-size: 30px;
+}
+.books .spirit .part div .edit {
+  background: #6ad2ff;
+  padding: 2px;
+  border-radius: 50%;
+  color: white;
+  font-size: 30px;
+}
+.read {
+  display: flex;
+  flex-direction: column;
+}
+
+.books .part .read .alone {
+  padding-top: 30%;
+}
+
+
+@media (max-width: 768px) {
+  .store {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-between;
+    margin: auto;
+    gap: 10px;
+  }
+}
