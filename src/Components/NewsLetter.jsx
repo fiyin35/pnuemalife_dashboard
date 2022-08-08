@@ -1,7 +1,8 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import './NewsLetter.css'
 import profile from '../assets/propic.jpg';
-import { NewsLetter } from './Data';
+import axios from '../api/index'
+//import { NewsLetter } from './Data';
 
 
 
@@ -11,7 +12,16 @@ import { NewsLetter } from './Data';
 
 
 function NewsLetterPage() {
-    const [letter, setLetters] = useState(NewsLetter);
+    const [letter, setLetters] = useState([]);
+
+    useEffect(() => {
+
+        axios.get('newsletter')
+        .then(response => {
+            setLetters(response.data.query)
+        })
+        .catch(err => console.log(err))
+    }, [])
 
 
     return (
@@ -44,20 +54,20 @@ function NewsLetterPage() {
                 <table>
                     <thead>
                         <tr>
-                            <th>Name</th>
+                            {/* <th>Name</th> */}
                             <th>Email</th>
-                            <th>Date</th>
-                            <th></th>
+                            {/* <th>Date</th>
+                            <th></th> */}
                         </tr>
                     </thead>
                     <tbody>
                         {letter.map((Subscribers, idx) => (
                             <Fragment key={idx}>
                                 <tr>
-                                    <td>{Subscribers.Name}</td>
-                                    <td className='email'>{Subscribers.Email}</td>
-                                    <td>{Subscribers.Date}</td>
-                                    <td><button className='cancel-button'>cancel</button></td>
+                                    {/* <td>{Subscribers.Name}</td> */}
+                                    <td className='email'>{Subscribers.email}</td>
+                                    {/* <td>{Subscribers.Date}</td>
+                                    <td><button className='cancel-button'>cancel</button></td> */}
 
                                 </tr>
                             </Fragment>

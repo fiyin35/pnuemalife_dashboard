@@ -7,7 +7,7 @@ export const Recieved = [
     Email: "Kunlegafe@gmail.com",
     Date: "03/03/12 22:43",
     Location: "Corona, Michigan",
-  },
+  }, 
   {
     id: 2,
     Amount: "#6,000",

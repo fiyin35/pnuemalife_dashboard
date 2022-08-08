@@ -1,6 +1,7 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import './GivePage.css'
 import circle from '../assets/circle.png';
+import axios from '../api/index';
 import profile from '../assets/propic.jpg';
 import { Recieved } from './Data.js';
 import { GiveOut } from './Data.js';
@@ -8,8 +9,18 @@ import { GiveOut } from './Data.js';
 
 
 function GivePage() {
-    const [Persons, setPersons] = useState(Recieved);
-    const [Reasons, setReasons] = useState(GiveOut);
+    const [Persons, setPersons] = useState([]);
+    // const [Reasons, setReasons] = useState(GiveOut);
+
+    useEffect(() => {
+
+        axios.get('give')
+        .then(response => {
+            setPersons(response.data.query)
+        })
+        .catch(err => console.log(err))
+    }, [])
+
     return (
         <div className="container">
             <div className="headnav">
@@ -40,8 +51,8 @@ function GivePage() {
                 <table>
                     <thead>
                         <tr>
-                            <th>Amount Received</th>
-                            <th>Status</th>
+                            {/* <th>Amount Received</th>
+                            <th>Status</th> */}
                             <th>Name</th>
                             <th>Email</th>
                             <th>Date</th>
@@ -52,12 +63,12 @@ function GivePage() {
                         {Persons.map((person, index) => (
                             <Fragment key={index}>
                                 <tr>
-                                    <td>{person.Amount}</td>
-                                    <td className='status'><button>{person.Status ? 'Completed' : 'canceled'}</button></td>
-                                    <td>{person.Name}</td>
-                                    <td className='email'>{person.Email}</td>
-                                    <td>{person.Date}</td>
-                                    <td>{person.Location}</td>
+                                    {/* <td>{person.Amount}</td>
+                                    <td className='status'><button>{person.Status ? 'Completed' : 'canceled'}</button></td> */}
+                                    <td>{person.fullname}</td>
+                                    <td className='email'>{person.email}</td>
+                                    <td>{person.createdAt.toLocaleString().split('T')[0]}</td>
+                                    <td>{person.city}</td>
 
                                 </tr>
                             </Fragment>
@@ -71,8 +82,8 @@ function GivePage() {
                     <table>
                         <thead>
                             <tr>
-                                <th>Amount Received</th>
-                                <th>Status</th>
+                                {/* <th>Amount Received</th> */}
+                                {/* <th>Status</th> */}
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Date</th>
@@ -80,16 +91,16 @@ function GivePage() {
                             </tr>
                         </thead>
                         <tbody>
-                            {Reasons.map((Reason, index) => (
+                            {Persons.map((Reason, index) => (
                                 <Fragment key={index}>
                                     <tr>
-                                        <td>{Reason.Amount}</td>
-                                        <td ><button>
-                                        {Reason.Status ? 'completed' : 'canceled'}</button></td>
-                                        <td>{Reason.Name}</td>
-                                        <td className='email'>{Reason.Email}</td>
-                                        <td>{Reason.Date}</td>
-                                        <td>{Reason.Location}</td>
+                                        {/* <td>{Reason.Amount}</td> */}
+                                        {/* <td ><button>
+                                        {Reason.Status ? 'completed' : 'canceled'}</button></td> */}
+                                        <td>{Reason.fullname}</td>
+                                        <td className='email'>{Reason.email}</td>
+                                        <td>{Reason.createdAt.toLocaleString().split('T')[0]}</td>
+                                        <td>{Reason.city}</td>
 
                                     </tr>
                                 </Fragment>
